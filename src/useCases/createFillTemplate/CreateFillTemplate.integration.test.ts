@@ -39,4 +39,11 @@ describe('POST /fill-template', () => {
         expect(res.statusCode).toEqual(200);
 
     })
+    it('should be payload is empty', async () => {
+        const payload = {};
+        const res = await request(app).post('/fill-template').send(payload);
+        expect(res.statusCode).toEqual(400);
+        expect(res.text).toContain('Data is not empty.')
+
+    })
 })
